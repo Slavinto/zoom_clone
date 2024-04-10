@@ -4,9 +4,61 @@
 
 @layer utilities {
     .flex-between {
-        @apply flex justify-between;
+        @apply flex justify-between items-center;
+    }
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
+    .h-lvh {
+        height: 100lvh;
     }
 }
+
+/* Clerk components */
+.cl-userButtonPopoverActionButtonIcon {
+    color: white;
+}
+
+.cl-logoBox {
+    height: 40px;
+}
+.cl-dividerLine {
+    background: #252a41;
+    height: 2px;
+}
+
+.cl-internal-11m7oop {
+    /* flex-flow: row; */
+}
+
+.cl-socialButtons {
+    align-self: flex-start;
+}
+
+.cl-socialButtonsIconButton {
+    width: 67px;
+    height: 67px;
+    border: 3px solid #565761 !important;
+}
+
+.cl-internal-2gzuzc {
+    width: 24px;
+    height: 24px;
+    border-radius: 9999px;
+}
+
+.cl-socialButtonsProviderIcon.cl-providerIcon.cl-socialButtonsProviderIcon__github.cl-providerIcon__github {
+    filter: invert(1);
+}
+
+.cl-socialButtonsProviderIcon.cl-providerIcon.cl-socialButtonsProviderIcon__google.cl-providerIcon__google {
+    background-color: transparent;
+}
+
+.cl-userButtonPopoverActionButton {
+    color: white !important;
+}
+/* ====================================== */
 
 @layer base {
     :root {

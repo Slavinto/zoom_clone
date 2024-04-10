@@ -12,7 +12,6 @@ const Sidebar = () => {
         <section className='sticky left-0 top-0 flex flex-col h-screen w-fit justify-between bg-dark-1 p-6 text-white pt-28 max-sm:hidden lg:[246px]'>
             <div className='flex flex-1 flex-col gap-6'>
                 {sidebarLinks.map((l) => {
-                    console.log(pathname);
                     const isActive =
                         pathname === l.route ||
                         (pathname.startsWith(l.route) && l.route !== "/");
@@ -30,8 +29,9 @@ const Sidebar = () => {
                                 height={24}
                                 alt={l.label}
                             />
-                            <p className='font-semibold text-lg max-lg:hidden'></p>
-                            {l.label}
+                            <p className='font-semibold text-lg max-lg:hidden'>
+                                {l.label}
+                            </p>
                         </Link>
                     );
                 })}
