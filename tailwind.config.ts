@@ -33,6 +33,15 @@ const config = {
                 sky: {
                     1: "#C9DDFF",
                 },
+                orange: {
+                    1: "#FF742E",
+                },
+                purple: {
+                    1: "#830EF9",
+                },
+                yellow: {
+                    1: "#F9A90E",
+                },
             },
             keyframes: {
                 "accordion-down": {

@@ -1,3 +1,5 @@
+import MeetingTypeList from "@/components/ui/meeting-type-list";
+
 const HomePage = () => {
     const fullDate = new Date();
     const time = fullDate.toLocaleTimeString("en-US", {
@@ -26,6 +28,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+            <MeetingTypeList />
         </section>
     );
 };
