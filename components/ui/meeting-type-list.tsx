@@ -4,6 +4,9 @@ import ActionCard, { ActionCardType } from "./action-card";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import MeetingModal from "./meeting-modal";
+import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
+import { useUser } from "@clerk/nextjs";
+import { useToast } from "./use-toast";
 
 export type MeetingStateType =
     | "isJoiningMeeting"
@@ -14,8 +17,66 @@ export type MeetingStateType =
 const MeetingTypeList = () => {
     const [meetingState, setMeetingState] = useState<MeetingStateType>();
     const router = useRouter();
+    const client = useStreamVideoClient();
+    const { user } = useUser();
+    const [values, setValues] = useState({
+        dateTime: new Date(),
+        description: "",
+        link: "",
+    });
+    const [callDetails, setCallDetails] = useState<Call>();
+    const { toast } = useToast();
 
-    const createMeeting = () => {};
+    const createMeeting = async () => {
+        if (!client || !user || meetingState !== "isInstantMeeting") {
+            return;
+        }
+        try {
+            if (!values.dateTime) {
+                toast({
+                    title: "No date/time present",
+                    description: "Please specify date and time of the meeting",
+                });
+            }
+
+            const id = crypto.randomUUID();
+            const call = client?.call("default", id);
+
+            if (!call) {
+                throw new Error("Error. Failed to create a call.");
+            }
+
+            const startsAt =
+                values.dateTime.toISOString() ||
+                new Date(Date.now()).toISOString();
+            const description = values.description || "Instant Meeting";
+
+            await call.getOrCreate({
+                ring: true,
+                data: {
+                    starts_at: startsAt,
+                    custom: { description },
+                },
+            });
+            setCallDetails(call);
+
+            if (!values.description) {
+                router.push(`/meeting/${call.id}`);
+            }
+
+            toast({
+                title: "Scheduled: Catch up",
+                description: "Friday, February 10, 2023 at 5:57 PM",
+            });
+        } catch (error) {
+            const msg =
+                error instanceof Error ? error.message : JSON.stringify(error);
+            toast({
+                title: "Oops. Something went wrong",
+                description: msg,
+            });
+        }
+    };
 
     const handleCardClick = (meetingState: MeetingStateType) => {
         if (meetingState) {
