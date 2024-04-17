@@ -22,6 +22,12 @@ export const tokenProvider = async () => {
     const issued = Math.floor(Date.now() / 1000) - 60;
 
     const token = client.createToken(user?.id, exp, issued);
-
+    console.log(
+        "======================================================================"
+    );
+    console.log(token);
+    console.log(
+        "======================================================================"
+    );
     return token;
 };

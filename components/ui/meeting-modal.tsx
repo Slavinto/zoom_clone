@@ -1,17 +1,7 @@
 import React, { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 
-import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Image from "next/image";
 
 type MeetingModalType = {

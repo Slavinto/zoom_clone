@@ -26,7 +26,8 @@ const MeetingTypeList = () => {
     });
     const [callDetails, setCallDetails] = useState<Call>();
     const { toast } = useToast();
-
+    console.log({ callDetails });
+    console.log({ values });
     const createMeeting = async () => {
         if (!client || !user || meetingState !== "isInstantMeeting") {
             return;
@@ -50,16 +51,18 @@ const MeetingTypeList = () => {
                 values.dateTime.toISOString() ||
                 new Date(Date.now()).toISOString();
             const description = values.description || "Instant Meeting";
+            console.log({ call });
 
-            await call.getOrCreate({
-                ring: true,
-                data: {
-                    starts_at: startsAt,
-                    custom: { description },
-                },
-            });
+            call.join({ create: true });
+
+            // await call.getOrCreate({
+            //     data: {
+            //         starts_at: startsAt,
+            //         custom: { description },
+            //     },
+            // });
+
             setCallDetails(call);
-
             if (!values.description) {
                 router.push(`/meeting/${call.id}`);
             }
@@ -71,9 +74,9 @@ const MeetingTypeList = () => {
         } catch (error) {
             const msg =
                 error instanceof Error ? error.message : JSON.stringify(error);
+            console.error({ msg });
             toast({
-                title: "Oops. Something went wrong",
-                description: msg,
+                title: "Error. Failed to create meeting.",
             });
         }
     };
