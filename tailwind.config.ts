@@ -32,6 +32,7 @@ const config = {
                 },
                 sky: {
                     1: "#C9DDFF",
+                    2: "#ECF0FF",
                 },
                 orange: {
                     1: "#FF742E",

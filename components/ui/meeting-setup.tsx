@@ -20,8 +20,8 @@ const MeetingSetup = ({ handler }: { handler: (param: boolean) => void }) => {
             call?.microphone.disable();
             call?.camera.disable();
         } else {
-            call?.microphone.disable();
-            call?.camera.disable();
+            call?.microphone.enable();
+            call?.camera.enable();
         }
     }, [isMicCamToggledOn, call?.camera, call?.microphone]);
     return (
