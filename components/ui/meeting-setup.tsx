@@ -1,5 +1,6 @@
 "use client";
 import {
+    Call,
     DeviceSettings,
     VideoPreview,
     useCall,
@@ -7,7 +8,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { Button } from "./button";
 
-const MeetingSetup = ({ handler }: { handler: (param: boolean) => void }) => {
+const MeetingSetup = ({
+    handler,
+}: // call,
+{
+    handler: (param: boolean) => void;
+    // call: Call;
+}) => {
     const [isMicCamToggledOn, setIsMicCamToggledOn] = useState(false);
     const call = useCall();
 

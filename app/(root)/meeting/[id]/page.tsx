@@ -25,17 +25,20 @@ const MeetingPage = ({
         return <Loader />;
     }
     return (
-        <main className='h-screen w-full'>
-            <StreamCall call={call}>
+        <StreamCall call={call}>
+            <main className='h-screen w-full'>
                 <StreamTheme>
                     {isSetupComplete ? (
                         <MeetingRoom />
                     ) : (
-                        <MeetingSetup handler={setIsSetupComplete} />
+                        <MeetingSetup
+                            // call={call}
+                            handler={setIsSetupComplete}
+                        />
                     )}
                 </StreamTheme>
-            </StreamCall>
-        </main>
+            </main>
+        </StreamCall>
     );
 };
 

@@ -59,3 +59,21 @@ export const actionCards = [
         iconPath: "/icons/recordings.svg",
     },
 ];
+
+export const userAvatars = [
+    {
+        imgUrl: "/images/avatar-1.jpeg",
+    },
+    {
+        imgUrl: "/images/avatar-2.jpeg",
+    },
+    {
+        imgUrl: "/images/avatar-3.png",
+    },
+    {
+        imgUrl: "/images/avatar-4.png",
+    },
+    {
+        imgUrl: "/images/avatar-5.png",
+    },
+];

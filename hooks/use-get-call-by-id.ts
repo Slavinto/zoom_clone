@@ -11,21 +11,23 @@ export const useGetCallById = (id: string | string[]) => {
             return;
         }
         const loadCall = async () => {
-            const { calls } = await client.queryCalls({
-                filter_conditions: {
-                    id,
-                },
-            });
+            try {
+                const { calls } = await client.queryCalls({
+                    filter_conditions: {
+                        id,
+                    },
+                });
 
-            if (calls.length > 0) {
-                setCall(calls[0]);
-            }
+                if (calls.length > 0) {
+                    setCall(calls[0]);
+                }
 
-            setIsCallLoading(false);
+                setIsCallLoading(false);
+            } catch (error) {}
         };
 
         loadCall();
     }, [client, id]);
-    // console.log({ call, isCallLoading });
+
     return { call, isCallLoading };
 };
