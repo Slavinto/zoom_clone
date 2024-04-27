@@ -212,7 +212,7 @@ const MeetingTypeList = () => {
                     placeholder='Meeting link'
                     className='border-none bg-blue-2 focus-visible:ring-0 focus-visible:ring-offset-0'
                     onChange={(e) =>
-                        setValues((prev) => ({ ...prev, link: e.target.value }))
+                        setValues({ ...values, link: e.target.value })
                     }
                 />
             </MeetingModal>
