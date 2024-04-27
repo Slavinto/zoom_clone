@@ -31,7 +31,7 @@ const MeetingTypeList = () => {
     const [callDetails, setCallDetails] = useState<Call>();
     const { toast } = useToast();
 
-    const meetingLink = `/meeting/${callDetails?.id}`;
+    const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
 
     // console.log({ callDetails });
     // console.log({ values });
@@ -206,13 +206,20 @@ const MeetingTypeList = () => {
                 title='Fill in the Meeting Link'
                 className='text-center'
                 buttonText='Join Meeting'
-                handleClick={() => router.push(values.link)}
+                handleClick={() =>
+                    router.push(
+                        values.link.replace(
+                            `${process.env.NEXT_PUBLIC_BASE_URL}`,
+                            ""
+                        )
+                    )
+                }
             >
                 <Input
                     placeholder='Meeting link'
                     className='border-none bg-blue-2 focus-visible:ring-0 focus-visible:ring-offset-0'
                     onChange={(e) =>
-                        setValues({ ...values, link: e.target.value })
+                        setValues((prev) => ({ ...prev, link: e.target.value }))
                     }
                 />
             </MeetingModal>
