@@ -117,9 +117,7 @@ const CallList = ({ type }: { type: "ended" | "recordings" | "upcoming" }) => {
                                 link={
                                     type === "recordings" && callRec
                                         ? callRec.url
-                                        : `${
-                                              process.env.NEXT_PUBLIC_BASE_URL
-                                          }/meeting/${justCall && justCall.id}`
+                                        : `/meeting/${justCall && justCall.id}`
                                 }
                             />
                         );
