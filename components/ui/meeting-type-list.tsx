@@ -31,7 +31,7 @@ const MeetingTypeList = () => {
     const [callDetails, setCallDetails] = useState<Call>();
     const { toast } = useToast();
 
-    const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
+    const meetingLink = `/meeting/${callDetails?.id}`;
 
     // console.log({ callDetails });
     // console.log({ values });
